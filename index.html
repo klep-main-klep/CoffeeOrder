@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel ="icon" href="coffee.ico">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        form :focus:required:invalid {
+       border-color: #a94442;
+        }
+        </style>
+       
+    <title>CoffeeRun</title>
+</head>
+<body class = "container">
+    <header>
+        <h1>CoffeeRun</h1>
+    </header>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form data-coffee-order= "form">
+                    <div class = "form-group">
+                        <label for="CoffeeOrder">Coffee Order</label>
+                        <input class="form-control" name="coffee" id="CoffeeOrder" autofocus required pattern="[a-zA-Z\s]+">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailinput">Email</label>
+                        <input class="form-control" type="email" name="emailAddress" id="emailinput" placeholder="Enter your Email here" required>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="size" value ="Short" checked>Short
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="size" value="Tall" checked> Tall
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="size" value="Grande" checked>Grande
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="size" value="Coffee-zilla" checked>Coffee-Zilla
+                        </label>
+                    </div>
+                    <div class="form-control">
+                        <label for="flavorshot">Flavor Shot</label>
+                        <select class="form-control" id="flavorshot" name="flavor">
+                            <option value="">None</option>
+                            <option value="Caramel">Caramel</option>
+                            <option value="Mocha">Mocha</option>
+                            <option value="Almond">Almond</option>
+                        </select>
+                    </div>
+                    <br/><br/>
+                    <div class="form-group">
+                        <label for="strengthlevel" id="myValue">Caffeine Strength</label>
+                        <input name="strength" id="strengthlevel" type="range" value="40">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Pending Orders</h3>
+                <div data-coffee-order="checklist">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" charset="utf-8">
+    var strengthlevel = document.querySelector('#strengthlevel');
+    var mystrength = document.querySelector('#mystrength')
+    var Caffeine_level = 'Caffeine level';
+    var off = strengthlevel.offsetWidth / (parseInt(strengthlevel.max) - parseInt(strengthlevel.min));
+    var px =  ((strengthlevel.valueAsNumber - parseInt(strengthlevel.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
+
+        myValue.parentElement.style.left = px + 'px';
+        myValue.parentElement.style.top = strengthlevel.offsetHeight + 'px';
+        myValue.innerHTML = strengthlevel.value + ' ' + Caffeine_level;
+
+        strengthlevel.oninput =function(){
+        let px = ((strengthlevel.valueAsNumber - parseInt(strengthlevel.min)) * off) - (myValue.offsetWidth / 2);
+        myValue.innerHTML = strengthlevel.value + ' ' + Caffeine_level;
+        myValue.parentElement.style.left = px + 'px';
+  };
+  </script
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <script src="dev/polyfiller.js" charset="utf-8"></script>
+    <script src="scripts/validation.js" charset="utf-8"></script>
+    <script src="scripts/checklist.js" charset="utf-8"></script>
+    <script src="scripts/formhandler.js" charset="utf-8"></script>
+    <script src="scripts/remotedatastore.js" charset="utf-8"></script>
+    <script src="scripts/datastore.js" charset="utf-8"></script>
+    <script src = "scripts/truck.js" charset="utf-8"></script>
+    <script src="scripts/main.js" charset="utf-8"></script>
+</body>
+</html>
